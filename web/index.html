@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Incident Recall — TEAM TITANS</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><div class="brand"><span class="mark">IR</span><span>Incident Recall</span></div><div class="topright"><span class="pill">Powered by Hindsight memory</span><span>TEAM TITANS</span></div></header>
+  <main>
+    <section class="hero"><div><p class="eyebrow">ON-CALL MEMORY WORKSPACE</p><h1>When the alert returns,<br><em>the fix shouldn't vanish.</em></h1><p class="subtitle">Turn verified incident lessons into a starting point for the next responder. Record one resolution, then see what Hindsight recalls when a similar alert fires.</p></div><div class="hero-note"><span class="note-icon">↗</span><strong>A practical memory loop</strong><p>Resolve → retain → recall → review. Every suggestion stays tied to a previous incident.</p></div></section>
+    <section class="workflow" aria-label="Incident workflow"><div class="step"><b>01</b><span>Record a resolution</span></div><span class="arrow">→</span><div class="step"><b>02</b><span>Hindsight retains it</span></div><span class="arrow">→</span><div class="step"><b>03</b><span>Recall on a new alert</span></div></section>
+    <div class="grid">
+      <section class="card"><div class="card-head"><div><p class="eyebrow">MEMORY INPUT</p><h2>Record resolved incident</h2></div><span class="small-badge">RETAIN</span></div><p class="card-copy">Save only confirmed facts. This becomes the evidence future responders can retrieve.</p><form id="record-form"><label>Service<input name="service" required maxlength="80" placeholder="e.g. checkout-api"></label><label>Symptoms<textarea name="symptoms" required maxlength="1500" placeholder="What did users and dashboards show?"></textarea></label><label>Verified root cause<textarea name="cause" required maxlength="1500" placeholder="What actually caused the incident?"></textarea></label><label>Successful mitigation<textarea name="mitigation" required maxlength="1500" placeholder="What restored service?"></textarea></label><label>Follow-up<textarea name="followup" required maxlength="1500" placeholder="What needs to change permanently?"></textarea></label><button type="submit" class="primary">Retain incident <span>↗</span></button></form><p id="record-status" class="status" role="status"></p></section>
+      <section class="card brief-card"><div class="card-head"><div><p class="eyebrow">MEMORY OUTPUT</p><h2>Brief a new alert</h2></div><span class="small-badge blue">RECALL</span></div><p class="card-copy">See the standard first steps, then the relevant history Hindsight finds for this service.</p><form id="brief-form"><label>Service<input name="service" required maxlength="80" placeholder="e.g. checkout-api"></label><label>Current symptoms<textarea name="symptoms" required maxlength="1500" placeholder="e.g. elevated 502s after a deploy"></textarea></label><button type="submit" class="primary dark">Recall prior incidents <span>↗</span></button></form><p id="brief-status" class="status" role="status"></p><div id="brief-result" class="brief-result" hidden><div class="compare"><div class="result-panel"><div class="result-label">WITHOUT MEMORY</div><h3>Standard triage</h3><ol id="baseline"></ol></div><div class="result-panel memory-panel"><div class="result-label">WITH HINDSIGHT</div><h3>Relevant past incidents</h3><div id="memories"></div></div></div><p id="bank-label" class="bank-label"></p></div><div id="empty-prompt" class="empty-prompt"><span>⌁</span><p>Your next alert can start with the last incident's lessons.</p></div></section>
+    </div>
+    <p class="privacy">Use synthetic or approved incident data. Do not enter secrets or customer information. Recalled memories are evidence for review, not an automatic fix.</p>
+  </main>
+</body>
+</html>

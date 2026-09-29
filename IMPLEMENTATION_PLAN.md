@@ -1,6 +1,14 @@
 # Implementation Plan
 
-Status: **Awaiting product decision — substantial implementation is intentionally paused.**
+Status: **Product decision approved; implementation in progress.**
+
+Approved concept: an incident response memory agent for TEAM TITANS. One on-call engineer records a verified root cause and mitigation, then recalls them when a similar alert fires. The 60-second demo is: brief an alert with empty memory, retain a resolved incident, and brief the same symptoms again. Improvement is evidenced by the specific recalled cause and mitigation, not an invented performance metric.
+
+The first implementation uses a small Python web server and Hindsight HTTP API. Each service has its own memory bank. The UI compares a generic triage checklist with recalled incident evidence. Examples are synthetic until approved real cases are supplied. Do not enter secrets or customer data.
+
+Team: Anish Bhowmick, Akshyat Kumar Nayak, Devaans Patwari, Abhishek Dutta.
+
+Remaining gates: live Hindsight retain/recall verification, approved demo data, published repository, individual articles and posts, team video, Reddit link, and agreement on the single final submission.
 
 The official sources require a Hindsight-powered application but do not choose the problem, persona, or workflow. Architecture should follow those choices, not precede them.
 

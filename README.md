@@ -1,4 +1,4 @@
-# HackwithHyderabad 3.0
+# Incident Recall — HackwithHyderabad 3.0
 
 Isolated, documentation-first workspace for the Hindsight agent-memory hackathon.
 
@@ -6,8 +6,8 @@ Isolated, documentation-first workspace for the Hindsight agent-memory hackathon
 
 - The official problem statement and content guide were accessible through their public, read-only Google Docs text exports on 29 September 2026.
 - Their requirements have been captured in [`requirements/SPECIFICATION.md`](requirements/SPECIFICATION.md).
-- No product idea, user persona, architecture, application code, or dependencies have been selected yet.
-- Implementation must not begin until the team completes the decision gate in [`IMPLEMENTATION_PLAN.md`](IMPLEMENTATION_PLAN.md).
+- The team selected an incident response memory agent for on-call engineers.
+- Implementation status and remaining gates are in [`IMPLEMENTATION_PLAN.md`](IMPLEMENTATION_PLAN.md).
 
 ## Mandatory team actions
 
@@ -20,9 +20,13 @@ The announced submission date supplied with this workspace is **29 September 202
 ## Start here
 
 1. Read [`requirements/SPECIFICATION.md`](requirements/SPECIFICATION.md).
-2. Choose one real business problem, one primary persona, and one narrow workflow.
-3. Define the 60-second before/after memory demo and evidence of improvement.
-4. Record the choices in [`IMPLEMENTATION_PLAN.md`](IMPLEMENTATION_PLAN.md).
-5. Only then choose the stack and scaffold the application.
+2. Set `HINDSIGHT_API_URL` to your Hindsight server (Cloud: `https://api.hindsight.vectorize.io`; local: `http://localhost:8888`).
+3. Set `HINDSIGHT_API_KEY` for Cloud. Keep keys out of Git.
+4. Run `python app.py` and open `http://localhost:8765`.
+5. Record a resolved incident, then brief a similar alert.
+
+Python 3.10+ is sufficient; no package installation is required. Run `python -m unittest discover -s tests -v` for the included request-flow tests. The app reports Hindsight connection errors and does not invent memory results.
+
+The app sends resolved incident text to Hindsight `retain` and calls `recall` for a new alert, using a separate memory bank per service. It shows retrieved evidence beside a generic baseline checklist. Recalled content is advisory and must be reviewed before acting.
 
 Source links and access notes are in [`requirements/SOURCES.md`](requirements/SOURCES.md).
