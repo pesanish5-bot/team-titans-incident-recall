@@ -95,7 +95,11 @@ class Hindsight:
 
     def retain(self, bank: str, content: str) -> dict:
         self.ensure_bank(bank)
-        return self.request("POST", f"/v1/default/banks/{quote(bank)}/memories", {"items": [{"content": content}]})
+        return self.request(
+            "POST",
+            f"/v1/default/banks/{quote(bank)}/memories",
+            {"items": [{"content": content}]},
+        )
 
     def recall(self, bank: str, query: str) -> list[dict]:
         self.ensure_bank(bank)
@@ -124,7 +128,10 @@ def create_brief(data: dict, memory: Hindsight) -> dict:
     service = clean_text(data.get("service"), "Service", 80)
     symptoms = clean_text(data.get("symptoms"), "Symptoms")
     bank = bank_id(service)
-    query = f"For the {service} service, which prior production incidents involved {symptoms}? Recall verified causes and successful mitigations."
+    query = (
+        f"For the {service} service, which prior production incidents involved "
+        f"{symptoms}? Recall verified causes and successful mitigations."
+    )
     memories = memory.recall(bank, query)
     return {"service": service, "bank": bank, "baseline": BASELINE, "memories": memories}
 
